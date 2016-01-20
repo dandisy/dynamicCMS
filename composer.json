@@ -1,6 +1,6 @@
 {
     "name": "rbz/codeigniter",
-    "description": "The CodeIgniter Application with Composer",
+    "description": "The CodeIgniter Application including hmvc and twig with Composer",
     "require": {
         "php": ">=5.3.2",
         "codeigniter/framework": "3.0.*",
