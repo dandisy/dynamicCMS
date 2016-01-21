@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1fb7696f77bfac0e90641d90c93691d3",
-    "content-hash": "b311f64b096ac6e95d5ad2b09e55160d",
+    "hash": "69470a4ec4aae4e0c75ad062e4388013",
+    "content-hash": "64feabaa9a94f80c771753d17d36947f",
     "packages": [
         {
             "name": "bitmannl/codeigniter-modular-extensions",
@@ -57,16 +57,16 @@
         },
         {
             "name": "kenjis/codeigniter-ss-twig",
-            "version": "dev-master",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kenjis/codeigniter-ss-twig.git",
-                "reference": "2be026c5facedcd0186a1f4999d88120a7f57ffb"
+                "reference": "47dce229fb45680ba291404f5d1534da9d151936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/codeigniter-ss-twig/zipball/2be026c5facedcd0186a1f4999d88120a7f57ffb",
-                "reference": "2be026c5facedcd0186a1f4999d88120a7f57ffb",
+                "url": "https://api.github.com/repos/kenjis/codeigniter-ss-twig/zipball/47dce229fb45680ba291404f5d1534da9d151936",
+                "reference": "47dce229fb45680ba291404f5d1534da9d151936",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
                 "codeigniter",
                 "twig"
             ],
-            "time": "2015-12-26 08:10:28"
+            "time": "2015-11-17 03:43:39"
         },
         {
             "name": "twig/twig",
@@ -195,9 +195,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "kenjis/codeigniter-ss-twig": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

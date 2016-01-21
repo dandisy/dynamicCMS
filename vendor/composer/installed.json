@@ -63,52 +63,6 @@
         ]
     },
     {
-        "name": "kenjis/codeigniter-ss-twig",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kenjis/codeigniter-ss-twig.git",
-            "reference": "2be026c5facedcd0186a1f4999d88120a7f57ffb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kenjis/codeigniter-ss-twig/zipball/2be026c5facedcd0186a1f4999d88120a7f57ffb",
-            "reference": "2be026c5facedcd0186a1f4999d88120a7f57ffb",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "twig/twig": "~1.20"
-        },
-        "require-dev": {
-            "codeigniter/framework": "3.0.*"
-        },
-        "time": "2015-12-26 08:10:28",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Kenji Suzuki",
-                "homepage": "https://github.com/kenjis/codeigniter-ss-twig"
-            }
-        ],
-        "description": "A Simple and Secure Twig integration for CodeIgniter 3.0",
-        "keywords": [
-            "codeigniter",
-            "twig"
-        ]
-    },
-    {
         "name": "mikey179/vfsStream",
         "version": "v1.1.0",
         "version_normalized": "1.1.0.0",
@@ -191,5 +145,51 @@
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
         "description": "Install CodeIgniter Modular Extensions HMVC (WireDesignz) via Composer"
+    },
+    {
+        "name": "kenjis/codeigniter-ss-twig",
+        "version": "v0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kenjis/codeigniter-ss-twig.git",
+            "reference": "47dce229fb45680ba291404f5d1534da9d151936"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kenjis/codeigniter-ss-twig/zipball/47dce229fb45680ba291404f5d1534da9d151936",
+            "reference": "47dce229fb45680ba291404f5d1534da9d151936",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "twig/twig": "~1.20"
+        },
+        "require-dev": {
+            "codeigniter/framework": "3.0.*"
+        },
+        "time": "2015-11-17 03:43:39",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kenji Suzuki",
+                "homepage": "https://github.com/kenjis/codeigniter-ss-twig"
+            }
+        ],
+        "description": "A Simple and Secure Twig integration for CodeIgniter 3.0",
+        "keywords": [
+            "codeigniter",
+            "twig"
+        ]
     }
 ]
