@@ -1,5 +1,5 @@
 # cihmvctwig
 
-The CodeIgniter Application including hmvc and twig with Composer
+The CodeIgniter Application including hmvc and twig from Composer
 
-by dandisy @ redbuzz.co.id
+by dandi@redbuzz.co.id

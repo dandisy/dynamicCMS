@@ -4,28 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51e75234f3368ccfe84b08adac5cd929",
-    "content-hash": "33b71b9a887b6d2c6c5ff770cf8e6adb",
+    "hash": "9511c456d12f3fbbf62a58ca4fc65e00",
+    "content-hash": "50823ee9c853aafd0121bb1ff898324e",
     "packages": [
-        {
-            "name": "bitmannl/codeigniter-modular-extensions",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/BitmanNL/codeigniter-modular-extensions.git",
-                "reference": "59d6ce517ebf07648b8618f03f9adcf9fab9e1d6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/BitmanNL/codeigniter-modular-extensions/zipball/59d6ce517ebf07648b8618f03f9adcf9fab9e1d6",
-                "reference": "59d6ce517ebf07648b8618f03f9adcf9fab9e1d6",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Install CodeIgniter Modular Extensions HMVC (WireDesignz) via Composer",
-            "time": "2015-03-13 13:52:58"
-        },
         {
             "name": "codeigniter/framework",
             "version": "3.0.4",
