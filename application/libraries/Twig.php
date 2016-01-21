@@ -16,6 +16,8 @@ Twig_Autoloader::register();
 
 class Twig
 {
+	private $CI;
+
 	private $config = [];
 
 	private $functions_asis = [
@@ -42,9 +44,11 @@ class Twig
 
 	public function __construct($params = [])
 	{
+		$this->CI =& get_instance();
+
 		// default config
 		$this->config = [
-			'paths' => [VIEWPATH],
+			'paths' => APPPATH.'modules/'.$this->CI->router->fetch_module().'/views/',
 			'cache' => APPPATH . '/cache/twig',
 		];
 
