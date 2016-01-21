@@ -26,7 +26,7 @@ class Welcome extends MX_Controller {
 
 	public function index()
 	{
-		$data = array('name'=>'dandi', 'company'=>'redbuzz');
+		$data = array('name'=>'dandi', 'company'=>'redbuzz.co.id');
 		$this->twig->display('welcome', $data);
 
 	}
