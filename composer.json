@@ -5,7 +5,7 @@
         "php": ">=5.3.2",
         "codeigniter/framework": "3.0.*",
         "twig/twig": "~1.20",
-        "bitmannl/codeigniter-modular-extensions": "dev-master"
+        "bitmannl/codeigniter-modular-extensions": "^1.0"
     },
     "require-dev": {
         "mikey179/vfsStream": "1.1.*"
