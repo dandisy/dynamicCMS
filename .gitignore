@@ -46,6 +46,8 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
+
+
 ### CodeIgniter template
 */config/development
 */logs/log-*.php
@@ -53,6 +55,8 @@ crashlytics-build.properties
 */cache/*
 !*/cache/index.html
 !*/cache/.htaccess
+
+
 ### SublimeText template
 # cache files for sublime text
 *.tmlanguage.cache
@@ -68,6 +72,8 @@ crashlytics-build.properties
 
 # sftp configuration file
 sftp-config.json
+
+
 ### Composer template
 composer.phar
 vendor/
@@ -75,6 +81,8 @@ vendor/
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
+
+
 ### Eclipse template
 *.pydevproject
 .metadata
