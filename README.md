@@ -1,7 +1,17 @@
 ### rbz/codeigniter
 #### The CodeIgniter Application Integrated with HMVC, Twig and Doctrine ORM
 
-1. Installation
+1. Preparation
+
+    This project (for quick starting) has been set for MySQL Database with the following :
+
+        database name = ci3hmvc
+        user name = root
+        password =
+
+    For quick starting, you just create like above database in your own, or if you wont you can configure database your self.
+
+2. Installation
     * Git
 
         Clone this git project to your web root, go to the folder and run
@@ -22,7 +32,7 @@
 
         your-hostname/folder-name or your-project-folder-name/public
 
-2. How to use Doctrine ORM
+3. How to use Doctrine ORM
     * To generate schema from entities (code first) :        
         - create entities in models/entities, example:
         
@@ -63,27 +73,28 @@
 
             first, generate the mapping annotation
             
-                ./vendor/bin/doctrine orm:convert-mapping --from-database annotation models/mappings
+                ./vendor/bin/doctrine orm:convert-mapping --from-database annotation models/entities
             
             then, generate the entities
             
                 ./vendor/bin/doctrine orm:generate-entities --generate-annotations=true --generate-methods=true models/entities
             
-            last, ensure the generated class for entity not same with existing one(ei: controller class, or model class)
-            if same with other one, you need manually change:
+            the last, ensure that the entities class that is generated is not the same as an existing class(ei: controllers class, or models class),
+            if there are the same as the one, you need manually change for :
+
                 - class name
                 - annotation refered
                 - file name        
 
-3. Using Twig
+4. Using Twig
 
     Twig implementation is set to read view with .twig as file extention in each module ,
     if you want to Twig read other directory or file extention, you must change configuration in Twig.php library.
 
-4. CodeIgniter Implementation
+5. CodeIgniter Implementation
 
-    For security reason the index.php have been moved to public folder, and system file in outside web root directory.
-    You must set the web root directory to this public folder.
+    For security reason the index.php have been moved to public folder, whereas CodeIgniter system file in outside web root directory.
+    You must set the web root to this public directory.
 
         
 by dandi@redbuzz.co.id
