@@ -11,6 +11,11 @@
 
     For quick starting, you just create like above database in your own, or if you wont you can configure database your self.
 
+    You must configure database in
+
+        - CodeIgniter database (application > config > database.php)
+        - Doctrine implementation for CodeIgniter (application > libraries > Doctrine.php)
+
 2. Installation
     * Git
 
