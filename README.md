@@ -14,7 +14,11 @@
 2. Installation
     * Git
 
-        Clone this git project to your web root, go to the folder and run
+        Clone this git project to your web root
+
+            git clone https://github.com/dandisy/cihmvctwig.git
+
+        Go to the folder and run
 
             composer install
 
