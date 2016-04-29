@@ -7,18 +7,18 @@
  * Time: 15:46
  */
 
-class User extends CI_Controller {
+class User_module extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->library('doctrine');
-        $this->load->model('user_model');
+        $this->load->model('user_module_model', 'umm');
     }
 
     public function index()
     {
-        $data['user'] = $this->user_model->get_all();
+        $data['user'] = $this->umm->get_all();
         echo "test ok";
 
         $this->load->view('user', $data);
@@ -26,14 +26,14 @@ class User extends CI_Controller {
 
     public function add()
     {
-        $this->user_model->add_user('Eka', 'sri.ikhwati@gmail.com', 'Jepara');
+        $this->umm->add_user('Eka', 'sri.ikhwati@gmail.com', 'Jepara');
     }
 
     public function get()
     {
-        $data['user'] = $this->user_model->get_single(1);
+        $data['user'] = $this->umm->get_single(1);
     }
 }
 
-/* End of file User.php */
-/* Location: ./application/modules/user/controllers/User.php */
+/* End of file User_module.php */
+/* Location: ./application/modules/user_module/controllers/User_module.php */

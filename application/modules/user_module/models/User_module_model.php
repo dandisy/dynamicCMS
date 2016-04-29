@@ -9,7 +9,7 @@
 
 require_once(APPPATH."models/Entities/EntityUser.php");
 
-class User_model extends CI_Model {
+class User_module_model extends CI_Model {
     protected $em;
 
     public function __construct()

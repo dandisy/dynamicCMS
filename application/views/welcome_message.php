@@ -69,12 +69,6 @@
 <div id="container">
 	<h1>Welcome to CodeIgniter!</h1>
 
-	<ul>
-		<?php foreach ($contact as $key=>$value) { ?>
-			<li><?php echo $value; ?></li>
-		<?php } ?>
-	</ul>
-
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 

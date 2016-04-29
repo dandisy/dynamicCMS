@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends MX_Controller {
+class Welcome_module extends MX_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -26,7 +26,9 @@ class Welcome extends MX_Controller {
 	public function index()
 	{
 		$data = array('name'=>'dandi', 'company'=>'redbuzz.co.id');
-		$this->twig->display('welcome', $data);
+		$this->twig->run('welcome.twig', $data);
 
 	}
 }
+
+// end of file

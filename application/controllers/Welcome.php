@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['contact'] = $this->m->get_all();
-		$this->twig->display('welcome_message', $data);
+		$this->twig->display('welcome_message.php', $data);
 	}
 }
 
