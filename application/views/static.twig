@@ -1,10 +1,16 @@
 <h1>Static Page</h1>
 <h3>Using dynamic view only</h3>
 
-<ul>
-    {% for item in data %}
-        <li>{{ item }}</li>
-    {% endfor %}
-</ul>
+{% if data | length > 0 %}
+    <p>List of url parameter/s :</p>
+
+    <ul>
+        {% for item in data %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No url parameter/s passed</p>
+{% endif %}
 
 <p>by dandi@redbuzz.co.id</p>

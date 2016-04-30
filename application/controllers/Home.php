@@ -61,12 +61,36 @@ class Home extends CI_Controller {
             {
                 $data['data'] = array();
 
-                for($i=1; $i<func_num_args(); $i++)
+                if($this->uri->segment(1) != 'home')
                 {
-                    array_push($data['data'], func_get_args()[$i]);
-                }
+                    for($i=1; $i<func_num_args(); $i++)
+                    {
+                        array_push($data['data'], func_get_args()[$i]);
+                    }
 
-                $this->twig->display(func_get_args()[0] . '.twig', $data);
+                    $this->twig->display(func_get_args()[0] . '.twig', $data);
+                }
+                else
+                {
+                    if($this->router->default_controller != 'home')
+                    {
+                        for($i=1; $i<func_num_args(); $i++)
+                        {
+                            array_push($data['data'], func_get_args()[$i]);
+                        }
+
+                        $this->twig->display(func_get_args()[0] . '.twig', $data);
+                    }
+                    else
+                    {
+                        for($i=2; $i<func_num_args(); $i++)
+                        {
+                            array_push($data['data'], func_get_args()[$i]);
+                        }
+
+                        $this->twig->display(func_get_args()[1] . '.twig', $data);
+                    }
+                }
             }
             else
             {
