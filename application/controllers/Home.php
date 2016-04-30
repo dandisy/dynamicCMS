@@ -19,7 +19,7 @@ class Home extends CI_Controller {
             $this->_action = $this->uri->segment(2) ?: NULL;
         }
 
-        // In real world you query database to fill this properties
+        // In real implementation, you of course query database to get this properties
         $this->_presentation = array(
             'about' => array(
                 'view' => 'about',
