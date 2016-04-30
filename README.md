@@ -1,27 +1,17 @@
-### rbz/codeigniter
+### DynamicCMS - rbz/codeigniter project
 #### The CodeIgniter Application Integrated with HMVC, Twig and Doctrine ORM
+##### And featured with dynamic routes, dynamic controllers also dynamic views from database
 
 1. Preparation
 
-    This project (for quick starting) has been set for MySQL Database with the following :
-
-        database name = ci3hmvc
-        user name = root
-        password =
-
-    For quick starting, you just create like above database in your own, or if you wont you can configure database your self.
-
-    You must configure database in
-
-        - CodeIgniter database (application > config > database.php)
-        - Doctrine implementation for CodeIgniter (application > libraries > Doctrine.php)
+    Just read CodeIgniter documentation to begin CI based website
 
 2. Installation
     * Git
 
         Clone this git project to your web root
 
-            git clone https://github.com/dandisy/cihmvctwig.git
+            git clone https://github.com/dandisy/dynamicCMS.git
 
         Go to the folder and run
 
