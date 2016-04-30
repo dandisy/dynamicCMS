@@ -511,3 +511,40 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Enable Class loading with Namespaces
+|--------------------------------------------------------------------------
+|
+| Don't use codeigniter class loader ($this->load),
+| instead use php >5.3 namespace,
+|
+| by rbz team 2016-04-30
+*/
+spl_autoload_extensions('.php'); // Only Autoload PHP Files
+
+spl_autoload_register(
+    function($classname)
+    {
+        if (strpos($classname, '\\') !== false)
+        {
+            // Namespaced Classes
+            $classfile = (str_replace('\\', '/', $classname));
+
+            if ($classname[0] !== '/')
+            {
+                $classfile = APPPATH . $classfile . '.php';
+            }
+            require_once($classfile);
+        }
+        else if (strpos($classname, 'interface') !== false)
+        {
+            // Interfaces
+            strtolower($classname);
+            require_once('application/interfaces/' . $classname . '.php');
+        }
+    }
+);
+
+// end of file

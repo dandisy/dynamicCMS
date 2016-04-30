@@ -49,6 +49,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+if($route['default_controller'] != 'home')
+{
+    $route['home/(:any)'] = 'home/index';
+
+    $dynamic_route = 'home/(:any)';
+    $dynamic_segment = 'home/index';
+    $num_segments = count(explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/')));
+    for($i=1; $i<=$num_segments; $i++)
+    {
+        $dynamic_route .= '/(:any)';
+        $dynamic_segment .= '/$'.($i+1);
+        $route[$dynamic_route] = $dynamic_segment;
+    }
+}
+else
+{
+    $route['(:any)'] = 'home/index';
+
+    $dynamic_route = '(:any)';
+    $dynamic_segment = 'home/index';
+    $num_segments = count(explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/')));
+    for($i=1; $i<=$num_segments; $i++)
+    {
+        $dynamic_route .= '/(:any)';
+        $dynamic_segment .= '/$'.($i+1);
+        $route[$dynamic_route] = $dynamic_segment;
+    }
+}
+
+// end of file

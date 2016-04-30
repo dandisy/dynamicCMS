@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{{ view.title }}</title>
+    </head>
+
+    <body style="width: 100%">
+        <div class="container" style="width: 768px; margin: 0 auto">
+            <div class="page-header" style="text-align: center">
+                <h1>{{ view.title | upper }}</h1>
+                <h3>{{ view.description | title }}</h3>
+            </div>
+
+            <div class="page-body" style="margin: 20px 0; padding: 15px; border: 1px solid lightgray">
+                {% if url_parameters | length > 0 %}
+                    <p>List of url parameter/s :</p>
+
+                    <ul>
+                        {% for item in url_parameters %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No url parameter/s passed</p>
+                {% endif %}
+            </div>
+
+            <div class="page-footer" style="text-align: center">
+                <p>by dandi@redbuzz.co.id</p>
+            </div>
+        </div>
+    </body>
+</html>
