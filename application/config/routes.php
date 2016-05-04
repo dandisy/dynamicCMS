@@ -53,7 +53,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-if($route['default_controller'] != 'home')
+/*if($route['default_controller'] != 'home')
 {
     $route['home/(:any)'] = 'home/index';
 
@@ -80,6 +80,6 @@ else
         $dynamic_segment .= '/$'.($i+1);
         $route[$dynamic_route] = $dynamic_segment;
     }
-}
+}*/
 
 // end of file

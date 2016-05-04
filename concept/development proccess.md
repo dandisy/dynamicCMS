@@ -16,16 +16,9 @@
 - for Dynamic ADMIN PAGE
     - CONTENTS management
         
-            Static:
-            feature to create page (just page name with pre defined data structure ie: title, desc, etc)
-            
-            Dynamic:
+            feature Dynamic PAGE STRUCTURE, Dynamic TABLE SCHEMA creation
             feature to input data for page (direct input or by referenced to other datasource) and
             feature to define routing or controller and view to where data view must be render
-            
-        more better feature
-            
-            Dynamic PAGE STRUCTURE, Dynamic TABLE SCHEMA creation
             
     - ASSETS management
         to avoid broken link

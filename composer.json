@@ -5,7 +5,8 @@
     "require": {
         "codeigniter/framework": "^3.0",
         "doctrine/orm": "^2.5",
-        "twig/twig": "^1.24"
+        "twig/twig": "^1.24",
+        "memio/memio": "1.0"
     },
     "require-dev": {
         "mikey179/vfsStream": "^1.6"
