@@ -1,6 +1,6 @@
 {
     "name": "rbz/codeigniter",
-    "description": "The CodeIgniter Application Integrated with HMVC, Doctrine ORM and Twig",
+    "description": "The CodeIgniter Application Integrated with HMVC, Doctrine ORM and Twig for Project of Dynamic CMS (blank buildable CMS)",
     "type": "Project",
     "require": {
         "codeigniter/framework": "^3.0",

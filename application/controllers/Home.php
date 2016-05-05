@@ -10,6 +10,8 @@ class Home extends CI_Controller {
     {
         parent::__construct();
 
+        $this->load->model('data_wc_model', 'vmodel');
+
         if($this->uri->segment(1) != 'home')
         {
             $this->_action = $this->uri->segment(1) ?: NULL;
@@ -19,42 +21,20 @@ class Home extends CI_Controller {
             $this->_action = $this->uri->segment(2) ?: NULL;
         }
 
-        // In real implementation, you of course query database to get this properties
-        $this->_presentation = array(
-            'about' => array(
-                'view' => 'about',
-                'data' => array(
-                    'title' => 'About Page',
-                    'description' => 'this is just about page'
-                )
-            ),
-            'service' => array(
-                'view' => 'service',
-                'data' => array(
-                    'title' => 'Service Page',
-                    'description' => 'this is just service page'
-                )
-            ),
-            'contact' => array(
-                'view' => 'contact',
-                'data' => array(
-                    'title' => 'Contact Us Page',
-                    'description' => 'this is just contact us page'
-                )
-            )
-        );
+        // In real implementation, of course, you have to query database to get this datas
+        $this->_presentation = $this->vmodel->get_presentation();
     }
 
     /**
-     * -----------------------------------------------------
+     * -------------------------------------------------------------------------
      * Dynamic method and dynamic view or dynamic view only
-     * -----------------------------------------------------
+     * -------------------------------------------------------------------------
      *
      * by rbz team
      */
     public function index()
     {
-        // Dynamic view only from url parameter after method
+        // Dynamic view only, passing from url parameter after method parameter
         if($this->_action == 'index')
         {
             if(func_num_args() > 0)
@@ -103,6 +83,10 @@ class Home extends CI_Controller {
             $action = $this->_action;
             $this->$action(func_get_args());
         }
+        else if($this->_action == 'codegen')
+        {
+            $this->codegen();
+        }
         else
         {
             $this->load->view('welcome_message');
@@ -110,9 +94,9 @@ class Home extends CI_Controller {
     }
 
     /**
-     * -----------------------------------------------------
+     * -------------------------------------------------------------------------
      * Dynamic method and dynamic view
-     * -----------------------------------------------------
+     * -------------------------------------------------------------------------
      *
      * by rbz team
      */
@@ -131,6 +115,20 @@ class Home extends CI_Controller {
         {
             show_404();
         }
+    }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Dynamic code generator
+     * -------------------------------------------------------------------------
+     *
+     * by rbz team
+     */
+    public function codegen()
+    {
+        $this->load->library('code');
+
+        $this->code->generator();
     }
 }
 
