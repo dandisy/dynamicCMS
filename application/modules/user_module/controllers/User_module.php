@@ -7,7 +7,7 @@
  * Time: 15:46
  */
 
-class User_module extends CI_Controller {
+class User_module extends MX_Controller {
 
     public function __construct()
     {

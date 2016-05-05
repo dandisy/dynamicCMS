@@ -1,6 +1,19 @@
-### DynamicCMS - rbz/codeigniter project
+### DynamicCMS
 #### The CodeIgniter Application Integrated with HMVC, Twig and Doctrine ORM
 ##### And featured with dynamic routes, dynamic controllers also dynamic views from database
+
+this is rbz/codeigniter project for developing blank buildable CMS for blog, portal, e-commerce, etc.
+using single platform.
+
+##### Note :
+    if you wont only CodeIgniter integrated with HMVC, Twig and Doctrine,
+    but not the codes part of DynamicCMS, you can clone version 1.1.0
+    or clone this version and remove unwonted codes by your self.
+
+    also you can edit composer.json to exclude unwonted packages (Twig or Doctrine).
+
+    But for excluded HMVC you must manually delete the file in core and third_party folder,
+    because this part included manually, not using composer.
 
 1. Preparation
 
