@@ -1,14 +1,53 @@
 body {
-    background-color: #f5f5f5;
-    color: #424242;
+    background-color: #555555;
+    color: #f5f5f5;
 }
 .navbar, .navbar.navbar-default {
-    background-color: #01579b;
+    background-color: #424242;
     color: rgba(255,255,255, 0.84);
 }
 
 
 body {
+    height: 100vh;
+}
+
+a {
+    color: #f5f5f5;
+}
+a:hover, a:focus, a:active {
+    color: #D50000;
+}
+
+#content {
+}
+#content .welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 0;
+    margin-left: -70px;
+}
+#content .welcome h1 {
+    text-align: center;
+}
+#ribon-menu h3 {
+    float: left;
+}
+.ribon-menu-item {
+    float: left;
+}
+
+#content .item {
+    cursor: pointer;
+}
+#content .bold {
+    font-weight: bold;
+}
+#content ul {
+    padding-left: 1em;
+    line-height: 1.5em;
+    list-style-type: dot;
 }
 
 #banner {
@@ -258,4 +297,25 @@ footer p {
 
 .navbar-main .icon-bar + .icon-bar {
     margin-top: 5px;
+}
+
+.dropdown-menu {
+    background-color: #757575;
+}
+
+.navbar-header .dropdown-menu {
+    min-width: 330px;
+}
+.navbar-header .dropdown-menu a {
+    display: block;
+    text-align: center;
+    min-width: 80px;
+    margin: 15px;
+}
+.navbar-header .dropdown-menu a span {
+    font-size: 2em;
+}
+
+.navbar {
+    min-height: 70px;
 }

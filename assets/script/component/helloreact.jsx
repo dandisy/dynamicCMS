@@ -1,11 +1,4 @@
-ReactDOM.render(
-    <div>
-        <h1>Hello, React!</h1>
-    </div>,
-    document.getElementById('content')
-);
-
-var HelloReact = React.createClass({
+/*var RibonMenu = React.createClass({
     getInitialState: function() {
         return {
             message: 'I am from default state'
@@ -27,5 +20,26 @@ var HelloReact = React.createClass({
 
 ReactDOM.render(
     <HelloReact />,
-    document.getElementById('view')
+    document.getElementById('ribon-view')
+);*/
+
+
+var DefaultContentStyle = {
+    textAlign : 'center',
+    fontSize : '24px'
+};
+
+var DefaultContent = React.createClass({
+    render: function() {
+        return (
+            <div style={DefaultContentStyle}>
+                <h1>Webcore</h1>
+            </div>
+        );
+    }
+});
+
+ReactDOM.render(
+    <DefaultContent />,
+    document.getElementById('content')
 );
