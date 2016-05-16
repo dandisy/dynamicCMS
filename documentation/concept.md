@@ -29,6 +29,6 @@ Blank buildable CMS for blog, portal e-commerce, etc.
         
     Enhance
     dynamic module creation using third party library ie: memio, etc
-    and dynamic UI ie: ExtJS. tec.
+    and dynamic UI ie: ExtJS. etc.
             
         Dynamic CLASS GENERATOR and Dynamic UI

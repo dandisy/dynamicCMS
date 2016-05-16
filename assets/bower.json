@@ -1,0 +1,19 @@
+{
+  "name": "webcore",
+  "authors": [
+    "dandisy <salam@RC211V>"
+  ],
+  "description": "Dynamic CMS",
+  "main": "index.php",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "webcore"
+  ],
+  "license": "MIT",
+  "homepage": "webcore.com",
+  "dependencies": {
+    "react": "~15.0.2"
+  }
+}

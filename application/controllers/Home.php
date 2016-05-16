@@ -83,9 +83,13 @@ class Home extends CI_Controller {
             $action = $this->_action;
             $this->$action(func_get_args());
         }
-        else if($this->_action == 'codegen')
+        else if($this->_action == 'schemacreator')
         {
-            $this->codegen();
+            $this->schemacreator();
+        }
+        else if($this->_action == 'classgenerator')
+        {
+            $this->classgenerator();
         }
         else
         {
@@ -119,16 +123,73 @@ class Home extends CI_Controller {
 
     /**
      * -------------------------------------------------------------------------
-     * Dynamic code generator
+     * Dynamic table schema creator
      * -------------------------------------------------------------------------
      *
      * by rbz team
      */
-    public function codegen()
+    public function schemacreator()
     {
-        $this->load->library('code');
+        $this->load->dbforge();
 
-        $this->code->generator();
+        $test = array(
+            'blog_id' => array(
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => TRUE
+            ),
+            'blog_title' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ),
+            'blog_author' => array(
+                'type' =>'VARCHAR',
+                'constraint' => '100',
+                'default' => 'King of Town',
+            ),
+            'blog_description' => array(
+                'type' => 'TEXT',
+                'null' => TRUE,
+            ),
+        );
+
+        $this->dbforge->add_field($test);
+
+        $this->dbforge->add_key('blog_id', TRUE);
+
+        $this->dbforge->create_table('schema', TRUE);
+    }
+
+    /**
+     * -------------------------------------------------------------------------
+     * Dynamic class generator
+     * -------------------------------------------------------------------------
+     *
+     * by rbz team
+     */
+    public function classgenerator()
+    {
+        $this->load->library('codegenerator');
+
+        $this->codegenerator->generate(
+            'test_code',
+            array(
+                'property' => array(
+                    'prop1',
+                    'prop2'
+                ),
+                'method' => array(
+                    array(
+                        'meth1' => array(
+                            'int' => 'arg1',
+                            'string' => 'arg2',
+                            'DateTime' => 'arg3'
+                        )
+                    ),
+                    'meth2'
+                )
+            )
+        );
     }
 }
 
