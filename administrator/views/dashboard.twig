@@ -34,6 +34,27 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
         <script type="text/babel" src="{{ base_url }}assets/script/component/helloreact.jsx"></script>#}
+
+        <!-- item template -->
+        <script type="text/x-template" id="item-template">
+            <li>
+                <div
+                        :class="{bold: isFolder}"
+                        @click="toggle"
+                        @dblclick="changeType">
+                    @{model.name}
+                    <span v-if="isFolder">[@{open ? '-' : '+'}]</span>
+                </div>
+                <ul v-show="open" v-if="isFolder">
+                    <item
+                            class="item"
+                            v-for="model in model.children"
+                            :model="model">
+                    </item>
+                    <li @click="addChild">+</li>
+                </ul>
+            </li>
+        </script>
     </head>
     <body>
         <div class="container-fluid">
@@ -50,19 +71,19 @@
 
                             <div class="dropdown-menu">
                                 <div class="pull-left">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" class="dashboard">
                                         <span class="glyphicon glyphicon-dashboard"></span>
                                         <h5>Dashboard</h5>
                                     </a>
                                 </div>
                                 <div class="pull-left">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" class="schema">
                                         <span class="glyphicon glyphicon-paperclip"></span>
                                         <h5>Schema</h5>
                                     </a>
                                 </div>
                                 <div class="pull-left">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" class="content">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                         <h5>Content</h5>
                                     </a>
@@ -71,7 +92,7 @@
                                 <div class="clearfix"></div>
 
                                 <div class="pull-left">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" class="asset">
                                         <span class="glyphicon glyphicon-folder-close"></span>
                                         <h5>Asset</h5>
                                     </a>
@@ -145,76 +166,82 @@
                 </div>
 
                 {#content#}
-
-                <!-- item template -->
-                <script type="text/x-template" id="item-template">
-                    <li>
-                        <div
-                                :class="{bold: isFolder}"
-                                @click="toggle"
-                                @dblclick="changeType">
-                            @{model.name}
-                            <span v-if="isFolder">[@{open ? '-' : '+'}]</span>
-                        </div>
-                        <ul v-show="open" v-if="isFolder">
-                            <item
-                                    class="item"
-                                    v-for="model in model.children"
-                                    :model="model">
-                            </item>
-                            <li @click="addChild">+</li>
-                        </ul>
-                    </li>
-                </script>
-
-                <p>(You can double click on an item to turn it into a folder.)</p>
-
-                <!-- the demo root element -->
-                <ul id="demo">
-                    <item
-                            class="item"
-                            :model="treeData">
-                    </item>
-                </ul>
-
                 <div id="content">
                     <wc-welcome></wc-welcome>
-                </div>
 
-                <div class="inputs container">
-                    <h2>Input label styles
-                        <small>default sizing</small>
-                    </h2>
+                    <aside class="col-md-3">
+                        <!-- the demo root element -->
+                        <ul>
+                            <item
+                                    class="item"
+                                    :model="treeData">
+                            </item>
+                        </ul>
+                    </aside>
 
-                    <div class="form-group label-static">
-                        <label for="i2" class="control-label">label-static</label>
-                        <input class="form-control" id="i2" placeholder="placeholder attribute" type="email">
+                    <div class="col-md-9">
+                        <h1 class="text-center">Demo of vue-form-generator</h1>
+                        <div id="app">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Form</div>
+                                <div class="panel-body">
+                                    <vue-form-generator {{ ':schema="schema", :model="model", :options="formOptions"' }}></vue-form-generator>
+                                </div>
+                            </div>
 
-                        <p class="help-block">This is a hint as a <code>p.help-block.hint</code></p>
-                    </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Model</div>
+                                <div class="panel-body">
+                                    <pre v-if="model">@{  model | prettyJSON }</pre>
+                                </div>
+                            </div>
 
-                    <div class="form-group label-floating">
-                        <label for="i5" class="control-label">label-floating</label>
-                        <input class="form-control" id="i5" type="email">
-                        <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
-                    </div>
-
-                    <div class="form-group label-placeholder">
-                        <label for="i5p" class="control-label">label-placeholder</label>
-                        <input class="form-control" id="i5p" type="email">
-                        <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
-                    </div>
-
-                    <form>
-                        <div class="form-group">
-                            <label for="i5ps" class="control-label col-sm-2">Column label</label>
-
-                            <div class="col-sm-10">
-                                <input class="form-control" id="i5ps" placeholder="placeholder attribute" type="email">
-                                <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Schema</div>
+                                <div class="panel-body">
+                                    <pre v-if="model">@{  schema | prettyJSON }</pre>
+                                </div>
                             </div>
                         </div>
-                    </form>
+
+
+
+                        <div class="inputs">
+                            <h2>Input label styles
+                                <small>default sizing</small>
+                            </h2>
+
+                            <div class="form-group label-static">
+                                <label for="i2" class="control-label">label-static</label>
+                                <input class="form-control" id="i2" placeholder="placeholder attribute" type="email">
+
+                                <p class="help-block">This is a hint as a <code>p.help-block.hint</code></p>
+                            </div>
+
+                            <div class="form-group label-floating">
+                                <label for="i5" class="control-label">label-floating</label>
+                                <input class="form-control" id="i5" type="email">
+                                <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
+                            </div>
+
+                            <div class="form-group label-placeholder">
+                                <label for="i5p" class="control-label">label-placeholder</label>
+                                <input class="form-control" id="i5p" type="email">
+                                <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
+                            </div>
+
+                            <form>
+                                <div class="form-group">
+                                    <label for="i5ps" class="control-label col-sm-2">Column label</label>
+
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="i5ps" placeholder="placeholder attribute" type="email">
+                                        <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -266,7 +293,9 @@
         </script>#}
 
         <!-- Vue -->
-        <script src="{{ base_url() }}assets/libs/vue/vue.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+        <script src="https://rawgit.com/icebob/vue-form-generator/master/dist/vue-form-generator.js"></script>
         <script src="{{ base_url() }}assets/script/app.js"></script>
     </body>
 </html>
