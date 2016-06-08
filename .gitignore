@@ -78,8 +78,7 @@ build/Release
 
 # Dependency directory
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
-/node_modules
-/test/node_modules
+node_modules
 ### CodeIgniter template
 */config/development
 */logs/log-*.php
@@ -216,5 +215,5 @@ local.properties
 .texlipse
 
 ### bower
-#bower_components
+bower_components
 
