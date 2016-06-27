@@ -1,0 +1,201 @@
+{% block css_load %}
+    <style>
+        #item-context-menu{
+            background: #FAFAFA;
+            border: 1px solid #BDBDBD;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+            display: block;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            width: 250px;
+            z-index: 999999;
+        }
+        #item-context-menu li {
+            border-bottom: 1px solid #E0E0E0;
+            cursor: pointer;
+            margin: 0;
+            padding: 5px 35px;
+        }
+        #item-context-menu li:last-child {
+            border-bottom: none;
+        }
+        #item-context-menu li:hover {
+            background: #1E88E5;
+            color: #FAFAFA;
+        }
+    </style>
+{% endblock %}
+
+<script type="text/x-template" id="data-field-definition">
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-primary">Data Field Definition</h1>
+            </div><!--end .col -->
+            <div class="col-lg-8">
+                <article class="margin-bottom-xxl">
+                    <p class="lead">
+                        Tahap pertama untuk membuat sebuah Webcore Content, Anda harus membuat Schema Data Field-nya dahulu.
+                        Schema ini yang nantinya akan diterapkan pada saat membuat Content Item.
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <!-- END INTRO -->
+
+        <!-- BEGIN SORTABLE -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">Field List</h2>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <h4>Easy sorting</h4>
+            </div><!--end .col -->
+            <div class="col-lg-3 col-md-4">
+                <article class="margin-bottom-xxl">
+                    <p>
+                        Creating a sortable list is really easy.
+                        You only have to add <code>data-sortable="true"</code> to your code and you can start dragging.
+                    </p>
+                </article>
+            </div><!--end .col -->
+            <div class="col-lg-offset-1 col-md-8">
+                <div class="card">
+                    <div class="card-body no-padding">
+                        <ul class="list" data-sortable="true">
+                            {% verbatim %}
+                            <li class="tile" v-for="field in fields">
+                            {% endverbatim %}
+                            <a class="tile-content ink-reaction">
+                                <div class="tile-icon">
+                                    <img src="{{ base_url }}assets/img/avatar2.jpg?1404026449" alt="" />
+                                </div>
+                                {% verbatim %}
+                                <div class="tile-text">
+                                    {{ field.title }}
+                                    <p class="tile-text-desc">
+                                        <small>
+                                            {{ field.description }}
+                                        </small>
+                                    </p>
+                                    <p class="tile-text-attr">
+                                        <small>
+                                            <span>Type: {{ field.type }}</span> <span>Placeholder: {{ field.placeholder }}</span> <span>Value: {{ field.value }}</span>
+                                        </small>
+                                    </p>
+                                    <button class="btn btn-xs btn-danger" v-if="!field.readonly" @click="deleteField($index)">Delete</button>
+                                </div>
+                                {% endverbatim %}
+                                <div class="tile-icon">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </div>
+                            </a>
+                            </li>
+                        </ul>
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+                <em class="text-caption">Drag to sort the list</em>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <!-- END SORTABLE -->
+
+        <!-- BEGIN MODALS -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">Field Definition</h2>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <h4>Examples</h4>
+            </div><!--end .col -->
+            <div class="col-lg-3 col-md-4">
+                <article class="margin-bottom-xxl">
+                    <p>
+                        Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults
+                    </p>
+                </article>
+            </div><!--end .col -->
+            <div class="col-lg-offset-1 col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <button class="btn btn-default-bright btn-raised" data-toggle="modal" data-target="#formModal">Add new Field Definition</button>
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+                <em class="text-caption">Click to see the modals</em>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <!-- END MODALS -->
+
+        <!-- BEGIN FORM MODAL MARKUP -->
+        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="formModalLabel">Schema Field Definition</h4>
+                    </div>
+                    {% verbatim %}
+                    <form class="form" role="form">
+                        <div class="modal-body">
+                            <div class="form-group floating-label">
+                                <input type="text" name="title" id="title" class="form-control" v-model="field.title">
+                                <label for="title" class="control-label">Title</label>
+                            </div>
+                            <div class="form-group floating-label">
+                                <textarea name="description" id="description" class="form-control" v-model="field.description"></textarea>
+                                <label for="description" class="control-label">Description</label>
+                            </div>
+                            <div class="form-group floating-label">
+                                <select class="form-control select2-list" data-placeholder="Select an item" v-model="field.type">
+                                    <optgroup label="Basic Field Types">
+                                        <option value="0"></option>
+                                        <option value="1">Text (Single Text)</option>
+                                        <option value="2">Textarea (Multi Text)</option>
+                                        <option value="3">Radio (Single Choise)</option>
+                                        <option value="4">Checkbox (Multi Choise)</option>
+                                        <option value="5">Option (Dropdown Option)</option>
+                                        <option value="6">Multi Option (Dropdown Multi Option)</option>
+                                        <option value="7">File (Single File Upload)</option>
+                                    </optgroup>
+                                    <optgroup label="Advance Field Types">
+                                        <option value="8">Text Editor (Multi Text & HTML)</option>
+                                        <option value="9">Date Picker</option>
+                                        <option value="10">Time Picker</option>
+                                        <option value="11">Datetime Picker</option>
+                                        <option value="12">Color Picker</option>
+                                        <option value="13">Tags Input</option>
+                                        <option value="14">Including Option (Left Include vs Right Exclude)</option>
+                                        <option value="15">Media Gallery (Multi File Upload)</option>
+                                        <option value="16">Data Source (Data from other Item)</option>
+                                        <option value="17">Data Grid (Dynamic Tabel based on Data Source)</option>
+                                        <option value="18">Geo Location Picker</option>
+                                    </optgroup>
+                                </select>
+                                <label>Select with option filtering</label>
+                            </div>
+                            <div class="form-group floating-label">
+                                <input type="text" name="placeholder" id="placeholder" class="form-control" v-model="field.placeholder">
+                                <label for="placeholder" class="control-label">Placeholder</label>
+                            </div>
+                            <div class="form-group floating-label">
+                                <input type="text" name="value" id="value" class="form-control" v-model="field.value">
+                                <label for="value" class="control-label">Value</label>
+                            </div>
+                            <div>
+                                <input type="hidden" name="readonly" id="readonly" value="false">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" @click="addField">Submit</button>
+                        </div>
+                    </form>
+                    {% endverbatim %}
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- END FORM MODAL MARKUP -->
+    </div><!--end .section-body -->
+</script>

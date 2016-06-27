@@ -25,7 +25,7 @@ Blank buildable CMS for blog, portal e-commerce, etc.
     - ASSETS management
         to avoid broken link
     
-            image to BLOB DATA
+            imaage to BLOB DATA
         
     Enhance
     dynamic module creation using third party library ie: memio, etc

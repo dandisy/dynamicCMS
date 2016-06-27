@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'web';
+$route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -60,12 +60,12 @@ $route['translate_uri_dashes'] = FALSE;
 |
 | by rbz team
 */
-if($route['default_controller'] != 'web')
+if($route['default_controller'] != 'home')
 {
-    $route['web/(:any)'] = 'web/index';
+    $route['home/(:any)'] = 'home/index';
 
-    $dynamic_route = 'web/(:any)';
-    $dynamic_segment = 'web/index';
+    $dynamic_route = 'home/(:any)';
+    $dynamic_segment = 'home/index';
     $num_segments = count(explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/')));
     for($i=1; $i<=$num_segments; $i++)
     {
@@ -76,10 +76,10 @@ if($route['default_controller'] != 'web')
 }
 else
 {
-    $route['(:any)'] = 'web/index';
+    $route['(:any)'] = 'home/index';
 
     $dynamic_route = '(:any)';
-    $dynamic_segment = 'web/index';
+    $dynamic_segment = 'home/index';
     $num_segments = count(explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/')));
     for($i=1; $i<=$num_segments; $i++)
     {

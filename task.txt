@@ -1,0 +1,38 @@
+ebelah atas main menu dan ribon menu webcore
+sebelah kiri adalah area webcore item (tree view)
+sebelah kanan adalah webcore data field
+
+1. jika item diklik maka akan requet ajax dengan pasing data item id untuk mendapatkan
+	json field definition dab dimasukan ke data model field definition untuk merender field miliknya
+
+2. membuat API untuk :
+	crud content by guid
+	crud content by item name
+	crud content by field tertentu dengan value tertentu
+
+	return php array
+	return php object
+	return php string
+	return json
+	return xml
+
+	REST API
+
+3. untuk request ajax bisa dicapai dengan menggunakan REST API
+
+4. untuk kontent dinamis (misal list artikel blog, list produk, dll) carannya aadalah :
+	membuat schema
+	membuat content presentation untuk menentukan routing dan view
+	membuat module untuk query content dynamis dengan bantuan webcore API
+	memanggil module dari view
+
+5. content item digunakan untuk membuat landing page dan static content pada static page
+6. object item digunakan untuk membuat dynamic content
+	pada object item kita bisa mendesain sendiri secara live ui untuk input data
+	untuk content dinamic (list artikel blog, dll) biasanya ui berupa data grid dengan filter, order dan pagination
+7. asset
+	bagian data field seperti file explorer untuk media file (image, video, dll) pada umunya
+
+8. untuk data field pada content item yang bertipe image/video/file jika browse di klik akan diarahkan ke asset untuk pilih fale
+
+9. login dengan sso oauth2

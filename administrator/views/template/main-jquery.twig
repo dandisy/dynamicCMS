@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		{% block meta_load %}{# Title page & meta data here #}{% endblock %}
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+		<link type='text/css' rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900'>
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/bootstrap.css?1422792965">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/materialadmin.css?1425466319">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/font-awesome.min.css?1422529194">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/material-design-iconic-font.min.css?1421434286">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/select2/select2.css?1424887856">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/multi-select/multi-select.css?1424887857">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css?1424887858">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/jquery-ui/jquery-ui-theme.css?1423393666">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/bootstrap-colorpicker/bootstrap-colorpicker.css?1424887860">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/bootstrap-tagsinput/bootstrap-tagsinput.css?1424887862">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/typeahead/typeahead.css?1424887863">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/dropzone/dropzone-theme.css?1424887864">
+
+        <style>
+            #item-context-menu{
+                background: #FAFAFA;
+                border: 1px solid #BDBDBD;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+                display: block;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                width: 250px;
+                z-index: 999999;
+            }
+            #item-context-menu li {
+                border-bottom: 1px solid #E0E0E0;
+                cursor: pointer;
+                margin: 0;
+                padding: 5px 35px;
+            }
+            #item-context-menu li:last-child {
+                border-bottom: none;
+            }
+            #item-context-menu li:hover {
+                background: #1E88E5;
+                color: #FAFAFA;
+            }
+        </style>
+
+		{% block css_load %}{% endblock %}
+		<!-- END STYLESHEETS -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="{{ base_url() }}assets/js/libs/utils/html5shiv.js?1403934957"></script>
+		<script src="{{ base_url() }}assets/js/libs/utils/respond.min.js?1403934956"></script>
+		<![endif]-->
+	</head>
+	<body class="menubar-hoverable header-fixed" v-cloak>
+		<!-- BEGIN HEADER-->
+		{% block header %}{% include 'views/template/header.twig' %} {% endblock %}
+		<!-- END HEADER-->
+
+		<!-- BEGIN BASE-->
+		<div id="base">
+			<!-- BEGIN CONTENT-->
+            {% block content %}{# Page content here #}{% endblock %}
+			<!-- END CONTENT -->
+
+			<!-- BEGIN MENUBAR-->
+			{% block menubar %}{% include 'views/template/menubar.twig' %}{% endblock %}
+			<!-- END MENUBAR -->
+
+			<!-- BEGIN OFFCANVAS RIGHT -->
+			{% block offcanvas %}{% include 'views/template/offcanvas.twig' %}{% endblock %}
+			<!-- END OFFCANVAS RIGHT -->
+		</div><!--end #base-->
+		<!-- END BASE -->
+
+		<!-- BEGIN JAVASCRIPT -->
+        <script src="{{ base_url() }}assets/js/libs/vue/vue.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap/bootstrap.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/spin.js/spin.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/autosize/jquery.autosize.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/select2/select2.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/multi-select/jquery.multi-select.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/moment/moment.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/typeahead/typeahead.bundle.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/dropzone/dropzone.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/App.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/AppNavigation.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/AppOffcanvas.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/AppCard.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/AppForm.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/AppNavSearch.js"></script>
+		<script src="{{ base_url() }}assets/js/core/source/AppVendor.js"></script>
+		<script src="{{ base_url() }}assets/js/core/demo/Demo.js"></script>
+		<script src="{{ base_url() }}assets/js/core/demo/DemoUILists.js"></script>
+		<script src="{{ base_url() }}assets/js/core/demo/DemoUIMessages.js"></script>
+		<script src="{{ base_url() }}assets/js/core/demo/DemoFormComponents.js"></script>
+
+        <script>
+            var itemTreeData = {
+                name: 'Webcore',
+                icon: 'home',
+                children: [
+                    {
+                        name: 'Content',
+                        icon: 'file-text-o',
+                        children: [
+                            {
+                                name: 'Website',
+                                active: false,
+                                children: [
+                                    {
+                                        name: 'Tango',
+                                        children: [
+                                            {name: 'About'},
+                                            {name: 'Service'}
+                                        ]
+                                    },
+                                    {
+                                        name: 'Formula',
+                                        children: [
+                                            {name: 'Info'},
+                                            {name: 'Service'}
+                                        ]
+                                    },
+                                    {
+                                        name: 'Rave',
+                                        children: []
+                                    },
+                                    {
+                                        name: 'HQ7',
+                                        children: []
+                                    }
+                                ]
+                            },
+                            {
+                                name: 'Other',
+                                children: []
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Asset',
+                        icon: 'folder-open-o',
+                        children: [
+                            {
+                                name: 'Image',
+                                children: [
+                                    {
+                                        name: 'Background',
+                                        children: [
+                                            {name: 'Image 1'},
+                                            {name: 'Image 2'}
+                                        ]
+                                    },
+                                    {
+                                        name: 'Profile',
+                                        children: [
+                                            {name: 'Image 1'},
+                                            {name: 'Image 2'}
+                                        ]
+                                    },
+                                    {
+                                        name: 'Product',
+                                        children: []
+                                    }
+                                ]
+                            },
+                            {
+                                name: 'Video',
+                                children: []
+                            },
+                            {
+                                name: 'Document',
+                                children: []
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Object',
+                        icon: 'puzzle-piece',
+                        children: [
+                            {
+                                name: 'Class',
+                                children: [
+                                    {
+                                        name: 'User',
+                                        children: [
+                                            {name: 'Editor'},
+                                            {name: 'Contributor'}
+                                        ]
+                                    },
+                                    {
+                                        name: 'Article',
+                                        children: [
+                                            {name: 'Article 1'},
+                                            {name: 'Article 2'}
+                                        ]
+                                    },
+                                    {
+                                        name: 'News',
+                                        children: []
+                                    },
+                                    {
+                                        name: 'Event',
+                                        children: []
+                                    },
+                                    {
+                                        name: 'Product',
+                                        children: []
+                                    }
+                                ]
+                            },
+                            {
+                                name: 'Instant',
+                                children: []
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Schema',
+                        icon: 'th-list',
+                        children: [
+                            {
+                                name: 'Web Page',
+                                children: [
+                                    {name: 'Landing Page'},
+                                    {name: 'Gallery'}
+                                ]
+                            },
+                            {
+                                name: 'Other',
+                                children: []
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            Vue.component('item-tree', {
+                template: '#item-tree-template',
+                props: {
+                    model: Object
+                },
+                data: function () {
+                    return {
+                        open: false,
+                        viewMenu: false,
+                        top: '0px',
+                        left: '0px'
+                    }
+                },
+                computed: {
+                    isFolder: function () {
+                        return this.model.children/* &&
+                         this.model.children.length*/
+                    },
+                    isActive: function () {
+                        return this.model.active
+                    }
+                },
+                events: {
+                    close: function () {
+                        this.open = false;
+                        return true
+                    }
+                },
+                methods: {
+                    toggle: function () {
+                        if (this.isFolder) {
+                            this.open = !this.open
+                        }
+                    },
+                    collapse: function() {
+                        if(this.open) {
+                            this.open = false;
+                            this.$broadcast('close')
+                        } else {
+                            this.open = true
+                        }
+                    },
+                    addFolder: function () {
+                        var name = prompt('Folder name?');
+
+                        this.model.children.push({
+                            name: name,
+                            children: []
+                        });
+
+                        this.open = true
+                    },
+                    addItem: function () {
+                        var name = prompt('Item name?');
+
+                        this.model.children.push({
+                            name: name
+                        });
+
+                        this.open = true
+                    },
+
+                    setMenu: function(top, left) {
+                        /*largestHeight = window.innerHeight - this.$els.right.offsetHeight - 25;
+                        largestWidth = window.innerWidth - this.$els.right.offsetWidth - 25;
+
+                        if (top > largestHeight) top = largestHeight;
+
+                        if (left > largestWidth) left = largestWidth;
+
+                        this.top = top + 'px';
+                        this.left = left + 'px';*/
+                    },
+                    closeMenu: function() {
+                        /*this.viewMenu = false;*/
+
+                        $('#item-context-menu').css({
+                            'top': 0,
+                            'left': 0
+                        }).hide();
+                    },
+                    openMenu: function(e) {
+                        /*this.viewMenu = true;
+
+                        Vue.nextTick(function() {
+                            this.$els.right.focus();
+                            this.setMenu(e.pageY, e.pageX)
+                        }.bind(this));*/
+
+                        /*$('#item-context-menu').css({
+                            'top': e.pageY,
+                            'left': e.pageX
+                        }).show();*/
+                    }
+                }
+            });
+
+            var itemTree = new Vue({
+                el: '#base',
+                data: {
+                    treeData: itemTreeData
+                }
+            });
+        </script>
+
+		{% block script_load %}{% endblock %}
+		<!-- END JAVASCRIPT -->
+	</body>
+</html>

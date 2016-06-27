@@ -1,0 +1,71 @@
+<script type="text/x-template" id="data-field">
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-primary">Data Field</h1>
+            </div><!--end .col -->
+            <div class="col-lg-8">
+                <article class="margin-bottom-xxl">
+                    <p class="lead">
+                        Isi dari field berikut ketika disave akan tersimpan di Table Schema dimana Content Item ini didasarkan.
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <!-- END INTRO -->
+
+        <!-- BEGIN SORTABLE -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">Field List</h2>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <h4>Easy sorting</h4>
+            </div><!--end .col -->
+            <div class="col-lg-3 col-md-4">
+                <article class="margin-bottom-xxl">
+                    <p>
+                        Creating a sortable list is really easy.
+                        You only have to add <code>data-sortable="true"</code> to your code and you can start dragging.
+                    </p>
+                </article>
+            </div><!--end .col -->
+            <div class="col-lg-offset-1 col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        {% verbatim %}
+                        <form class="form" role="form">
+                            <div v-for="field in fields">
+                                <div v-if="field.type == 1 && field.title == 'GUID'">
+                                    {{ field.title }}: <strong>{{ field.value }}</strong>
+                                </div>
+                                <div class="checkbox checkbox-styled" v-if="field.type == 4 && field.placeholder == 'as-navigation'">
+                                    <label for="{{ field.placeholder }}">
+                                        <input type="checkbox" name="{{ field.placeholder }}" id="{{ field.placeholder }}" class="form-control">
+                                        <span>{{ field.title }}</span>
+                                    </label>
+                                </div>
+                                <div class="form-group floating-label" v-if="field.type == 1 && !field.readonly">
+                                    <input type="text" name="{{ field.title | lowercase }}" id="{{ field.title | lowercase }}" class="form-control">
+                                    <label for="{{ field.title | lowercase }}" class="control-label">{{ field.title }}</label>
+                                </div>
+                                <div class="form-group floating-label" v-if="field.type == 2">
+                                    <textarea name="{{ field.title | lowercase }}" id="{{ field.title | lowercase }}" class="form-control"></textarea>
+                                    <label for="{{ field.title | lowercase }}" class="control-label">{{ field.title }}</label>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-default">Cancel</button>
+                                <button type="button" class="btn btn-primary" @click="addDataField">Submit</button>
+                            </div>
+                        </form>
+                        {% endverbatim %}
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+                <em class="text-caption">Click submit button before save</em>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <!-- END SORTABLE -->
+    </div><!--end .section-body -->
+</script>

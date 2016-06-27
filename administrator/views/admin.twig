@@ -1,0 +1,59 @@
+{% extends 'views/template/main.twig' %}
+
+{% block meta_load %}
+    <title>Webcore Admin Page - Dynamic CMS</title>
+{% endblock %}
+
+{% block css_load %}
+    <style>
+        #item-context-menu{
+            background: #FAFAFA;
+            border: 1px solid #BDBDBD;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+            display: block;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            width: 250px;
+            z-index: 999999;
+        }
+        #item-context-menu li {
+            border-bottom: 1px solid #E0E0E0;
+            cursor: pointer;
+            margin: 0;
+            padding: 5px 35px;
+        }
+        #item-context-menu li:last-child {
+            border-bottom: none;
+        }
+        #item-context-menu li:hover {
+            background: #1E88E5;
+            color: #FAFAFA;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- BEGIN OFFCANVAS LEFT -->
+    <div class="offcanvas">
+    </div><!--end .offcanvas-->
+    <!-- END OFFCANVAS LEFT -->
+
+	<div id="content">
+		{% block field %}
+			{% include 'views/welcome.twig' %}
+			{% include 'views/content.twig' %}
+			{% include 'views/asset.twig' %}
+            {% include 'views/class.twig' %}
+			{% include 'views/object.twig' %}
+			{% include 'views/schema.twig' %}
+		{% endblock %}
+
+		<section>
+			{% verbatim %}
+			<component :is="currentView"></component>
+			{% endverbatim %}
+		</section>
+	</div><!--end #content-->
+{% endblock %}

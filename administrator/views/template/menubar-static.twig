@@ -1,0 +1,181 @@
+<div id="menubar" class="menubar-inverse ">
+	<div class="menubar-fixed-panel">
+		<div>
+			<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>
+		<div class="expanded">
+			<a href="html/dashboards/dashboard.html">
+				<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="menubar-scroll-panel">
+		<!-- BEGIN MAIN MENU -->
+		<ul id="main-menu" class="gui-controls">
+			<!-- BEGIN DASHBOARD -->
+			<li>
+				<a class="active">
+					<div class="gui-icon"><i class="md md-home"></i></div>
+					<span class="title">Dashboard</span>
+				</a>
+			</li><!--end /menu-li -->
+			<!-- END DASHBOARD -->
+
+			<!-- BEGIN CONTENT -->
+			<li class="gui-folder">
+				<a>
+					<div class="gui-icon"><i class="fa fa-file-text-o"></i></div>
+					<span class="title">Content</span>
+				</a>
+				<!--start submenu -->
+				<ul>
+					<li class="gui-folder">
+						<a>
+							<span class="title">Website</span>
+						</a>
+						<!--start submenu -->
+						<ul>
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Redbuzz</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a><span class="title">About</span></a></li>
+									<li><a><span class="title">Solution</span></a></li>
+									<li><a><span class="title">Contact</span></a></li>
+								</ul><!--end /submenu -->
+							</li><!--end /menu-li -->
+							<li class="gui-folder"><a><span class="title">Other</span></a></li>
+						</ul><!--end /submenu -->
+					</li><!--end /menu-li -->
+					<li class="gui-folder"><a><span class="title">Other</span></a></li>
+				</ul><!--end /submenu -->
+			</li><!--end /menu-li -->
+			<!-- END CONTENT -->
+
+			<!-- BEGIN ASSET -->
+			<li class="gui-folder">
+				<a>
+					<div class="gui-icon"><i class="fa fa-folder-open-o"></i></div>
+					<span class="title">Asset</span>
+				</a>
+				<!--start submenu -->
+				<ul>
+					<li class="gui-folder">
+						<a href="javascript:void(0);">
+							<span class="title">Image</span>
+						</a>
+						<!--start submenu -->
+						<ul>
+							<li><a><span class="title">Products</span></a></li>
+							<li><a><span class="title">Profile</span></a></li>
+							<li><a><span class="title">Background</span></a></li>
+						</ul><!--end /submenu -->
+					</li><!--end /menu-li -->
+					<li class="gui-folder">
+						<a>
+							<span class="title">Video</span>
+						</a>
+					</li><!--end /menu-li -->
+                    <li class="gui-folder">
+                        <a>
+                            <span class="title">Document</span>
+                        </a>
+                    </li><!--end /menu-li -->
+				</ul><!--end /submenu -->
+			</li><!--end /menu-li -->
+			<!-- END ASSET -->
+
+			<!-- BEGIN OBJECT -->
+			<li class="gui-folder">
+				<a>
+					<div class="gui-icon"><i class="fa fa-puzzle-piece"></i></div>
+					<span class="title">Object</span>
+				</a>
+				<!--start submenu -->
+				<ul>
+					<li class="gui-folder">
+						<a>
+							<span class="title">Class</span>
+						</a>
+                        <!--start submenu -->
+                        <ul>
+                            <li><a><span class="title">User</span></a></li>
+                            <li><a><span class="title">Product</span></a></li>
+                            <li><a><span class="title">Event</span></a></li>
+                            <li><a><span class="title">Article</span></a></li>
+                            <li><a><span class="title">News</span></a></li>
+                        </ul><!--end /submenu -->
+					</li><!--end /menu-li -->
+					<li class="gui-folder">
+						<a>
+							<span class="title">Instant</span>
+						</a>
+					</li><!--end /menu-li -->
+				</ul><!--end /submenu -->
+			</li><!--end /menu-li -->
+			<!-- END OBJECT -->
+
+			<!-- BEGIN SCHEMA -->
+			<li class="gui-folder">
+				<a>
+					<div class="gui-icon"><span class="fa fa-th-list"></span></div>
+					<span class="title">Schema</span>
+				</a>
+				<!--start submenu -->
+				<ul>
+					<li class="gui-folder">
+						<a href="javascript:void(0);">
+							<span class="title">Web Page</span>
+						</a>
+						<!--start submenu -->
+						<ul>
+							<li><a><span class="title">Landing Page</span></a></li>
+							<li><a><span class="title">Gallery Page</span></a></li>
+						</ul><!--end /submenu -->
+					</li><!--end /menu-li -->
+					<li class="gui-folder"><a><span class="title">Other</span></a></li>
+				</ul><!--end /submenu -->
+			</li><!--end /menu-li -->
+
+            {% verbatim %}
+            <script type="text/x-template" id="item-tree-template">
+                <li :class="{'gui-folder': isFolder}">
+                    <a :class="{'active': isActive}" @contextmenu.prevent="openMenu">
+                        <div class="gui-icon" v-if="model.icon"><span class="fa fa-{{model.icon}}"></span></div>
+                        <span class="title">{{ model.name }}</span>
+
+                        <ul id="item-context-menu" tabindex="-1" v-if="viewMenu" @:mouseleave="closeMenu" :style="{top: top, left: left}" v-el:right>
+                            <li v-if="isFolder" @click="addFolder">New Folder</li>
+                            <li v-if="isFolder" @click="addItem">New Item</li>
+                            <li>Rename</li>
+                            <li>Copy</li>
+                            <li>Cut</li>
+                            <li>Paste</li>
+                            <li>Delete</li>
+                        </ul>
+                    </a>
+
+                    <ul v-show="open" v-if="isFolder">
+                        <item-tree class="item" v-for="model in model.children" :model="model"></item-tree>
+                    </ul>
+                </li>
+            </script>
+
+            <item-tree class="item" :model="treeData"></item-tree>
+            {% endverbatim %}
+			<!-- END SCHEMA -->
+		</ul><!--end .main-menu -->
+		<!-- END MAIN MENU -->
+
+		<div class="menubar-foot-panel">
+			<small class="no-linebreak hidden-folded">
+				<span class="opacity-75">Copyright &copy; 2016</span> <strong>Redbuzz Mediatama</strong>
+			</small>
+		</div>
+	</div><!--end .menubar-scroll-panel-->
+</div><!--end #menubar-->

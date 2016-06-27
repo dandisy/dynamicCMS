@@ -1,0 +1,57 @@
+<div id="menubar" class="menubar-inverse ">
+	{#<div class="menubar-fixed-panel">
+		<div>
+			<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>
+		<div class="expanded">
+			<a href="html/dashboards/dashboard.html">
+				<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+			</a>
+		</div>
+	</div>#}
+
+	<div class="menubar-scroll-panel">
+		<!-- BEGIN MAIN MENU -->
+		<ul id="main-menu" class="gui-controls">
+			<!-- BEGIN SCHEMA -->
+			{% verbatim %}
+            <script type="text/x-template" id="item-tree-template">
+                <li :class="{'gui-folder': isFolder, 'active': isActive}">
+                    <a :class="{'active': isActive}" @contextmenu.prevent="openMenu">
+                        <div class="gui-icon" v-if="model.icon"><span class="fa fa-{{model.icon}}"></span></div>
+                        <span class="title">{{ model.name }}</span>
+                    </a>
+
+                    <ul v-show="open" v-if="isFolder">
+                        <item-tree v-for="model in model.children" :model="model"></item-tree>
+                    </ul>
+                </li>
+            </script>
+
+            <item-tree :model="treeData"></item-tree>
+            {% endverbatim %}
+			<!-- END SCHEMA -->
+		</ul><!--end .main-menu -->
+		<!-- END MAIN MENU -->
+
+		<div class="menubar-foot-panel">
+			<small class="no-linebreak hidden-folded">
+				<span class="opacity-75">Copyright &copy; 2016</span> <strong>Redbuzz Mediatama</strong>
+			</small>
+		</div>
+	</div><!--end .menubar-scroll-panel-->
+</div><!--end #menubar-->
+
+{% verbatim %}
+<ul id="item-context-menu" style="display: none" tabindex="-1" onmouseleave="itemTree.$children[0].closeMenu()">
+	<li onclick="console.log(itemTree)">New Folder</li>
+	<li onclick="itemTree.$children[0].addItem()">New Item</li>
+	<li>Rename</li>
+	<li>Copy</li>
+	<li>Cut</li>
+	<li>Paste</li>
+	<li>Delete</li>
+</ul>
+{% endverbatim %}
