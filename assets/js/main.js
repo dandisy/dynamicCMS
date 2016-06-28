@@ -87,7 +87,17 @@ Vue.component('item-tree', {
 var itemTree = new Vue({
     el: '#menubar',
     data: {
-        treeData: itemTreeData
+        treeData: []
+    },
+    ready: function () {
+        this.$http.get('http://localhost/site/webcore/item_module').then(function(response) {
+            this.treeData = response.data;
+        });
+    },
+    methods: {
+        saveItem: function () {
+            console.log(JSON.parse(JSON.stringify(this.treeData)));
+        }
     }
 });
 
@@ -154,6 +164,9 @@ var dataField = new Vue({
                     if(confirm("Are you sure you want to delete this field?")) {
                         this.fields.splice(index, 1);
                     }
+                },
+                saveField: function() {
+                    console.log(JSON.parse(JSON.stringify(this.fields)));
                 }
             }
         }

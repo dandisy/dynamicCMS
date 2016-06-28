@@ -8,8 +8,8 @@ class Item_module_model extends CI_Model {
 
     public function get_all()
     {
-        $query = $this->db->select('*')
-            ->where('domain', '')
+        $query = $this->db->select('id, title as name, icon, parent_id')
+            //->where('domain', NULL)
             ->get('item');
         
         return $query;

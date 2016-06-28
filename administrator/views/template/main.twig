@@ -23,6 +23,12 @@
 		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/typeahead/typeahead.css?1424887863">
 		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/dropzone/dropzone-theme.css?1424887864">
 
+		<style>
+			.brand-holder a span {
+				font-size: 175%;
+			}
+		</style>
+
 		{% block css_load %}{% endblock %}
 		<!-- END STYLESHEETS -->
 
@@ -54,25 +60,41 @@
 		<!-- END BASE -->
 
 		<!-- BEGIN JAVASCRIPT -->
-        <script src="{{ base_url() }}assets/js/libs/vue/vue.js"></script>
-		<script src="{{ base_url() }}assets/js/libs/vue/vue-resource.js"></script>
-		<script src="{{ base_url() }}assets/js/libs/vue/vuex.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
+
 		<script src="{{ base_url() }}assets/js/libs/bootstrap/bootstrap.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+
 		<script src="{{ base_url() }}assets/js/libs/spin.js/spin.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/autosize/jquery.autosize.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/select2/select2.min.js"></script>
-		<script src="{{ base_url() }}assets/js/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/multi-select/jquery.multi-select.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/moment/moment.min.js"></script>
-		<script src="{{ base_url() }}assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-		<script src="{{ base_url() }}assets/js/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/typeahead/typeahead.bundle.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/dropzone/dropzone.min.js"></script>
 		<script src="{{ base_url() }}assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('.brand-holder a').on('click', function() {
+					dataField.currentView = 'welcome';
+				});
+
+				$('#wc-save-button').on('click', function() {
+					itemTree.saveItem();
+
+					if(dataField.currentView === 'schema') {
+						dataField.$children[0].saveField();
+					}
+				});
+			});
+		</script>
+
 		<script src="{{ base_url() }}assets/js/core/source/App.js"></script>
 		<script src="{{ base_url() }}assets/js/core/source/AppNavigation.js"></script>
 		<script src="{{ base_url() }}assets/js/core/source/AppOffcanvas.js"></script>
@@ -80,10 +102,16 @@
 		<script src="{{ base_url() }}assets/js/core/source/AppForm.js"></script>
 		<script src="{{ base_url() }}assets/js/core/source/AppNavSearch.js"></script>
 		<script src="{{ base_url() }}assets/js/core/source/AppVendor.js"></script>
+
 		<script src="{{ base_url() }}assets/js/core/demo/Demo.js"></script>
 		<script src="{{ base_url() }}assets/js/core/demo/DemoUILists.js"></script>
 		<script src="{{ base_url() }}assets/js/core/demo/DemoUIMessages.js"></script>
 		<script src="{{ base_url() }}assets/js/core/demo/DemoFormComponents.js"></script>
+
+		<script src="{{ base_url() }}assets/js/libs/vue/vue.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/vue/vue-resource.js"></script>
+		<script src="{{ base_url() }}assets/js/libs/vue/vuex.js"></script>
+
         <script src="{{ base_url() }}assets/vm/item.js"></script>
         <script src="{{ base_url() }}assets/vm/field.js"></script>
         <script src="{{ base_url() }}assets/js/main.js"></script>
