@@ -4,7 +4,8 @@
 
     |   Backlog             |   Task                                                                |   Status      |
     |-----------------------|-----------------------------------------------------------------------|---------------|
-    |   Item Tree           |   Create UI and function get Item data from database                  |   DONE        |
+    |   Item Tree           |   Create UI and function get Item data from database table and        |               |
+    |                       |   (convert array to multi dimension array for tree structure)         |   DONE        |
     |                       |   Create Item flagged: new, edit, delete. for database action         |   ON PROGRESS |
     |                       |   Create javascript object to store flagged Item before save          |               |
     |                       |   to database (nested data can't directly save to database table)     |               |
@@ -21,8 +22,8 @@
     |                       |   Create version system (History, Language)                           |               |
     |   Asset               |   Create file manager system                                          |               |
     |   Object              |   Create function to build UI Component                               |               |
-    |                       |   Create function create and alter database table for UI Component    |               |
-    |                       |   Create function to generate module code                             |               |
+    |                       |   Create function create and alter database table for UI Component    |   DONE        |
+    |                       |   Create function to generate module code                             |   DONE        |
     |                       |   Create function get UI Component data for user input                |               |
     |                       |   Create function to get JSON data user input to save to database     |               |
     |   User Management     |   Create user registration and login with user group and user role    |               |
