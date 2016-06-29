@@ -23,6 +23,7 @@
     |                       |   Create function to generate module code                             |               |
     |                       |   Create function get UI Component data for user input                |               |
     |                       |   Create function to get JSON data user input to save to database     |               |
+    |   User Management     |   Create user registration and login with user group and user role    |               |
     |   Backup              |   Create backup function for database and module (Component) code     |               |
     |   Analytics           |   Create user experiences analytics shown in dashboard                |               |
 
@@ -34,4 +35,5 @@
     |                       |   Object Component Data Field                                         |               |
     |   RESTFUL API         |   Create module for CRUD Content Data Field, and                      |               |
     |                       |   Object Component Data Field                                         |               |
-    |   Standard Template   |                                                                       |               |
+    |   Standard Template   |   Create standard template for :                                      |               |
+    |                       |   main, header, footer, side, page, list, single                      |               |
