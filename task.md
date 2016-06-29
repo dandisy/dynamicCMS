@@ -29,7 +29,7 @@
 2.  Content Presentation
 
     |   Backlog             |   Task                                                                |   Status      |
-    |-----------------------|-----------------------------------------------------------------------|-----------    |
+    |-----------------------|-----------------------------------------------------------------------|---------------|
     |   PHP API             |   Create module for CRUD Content Data Field, and                      |               |
     |                       |   Object Component Data Field                                         |               |
     |   RESTFUL API         |   Create module for CRUD Content Data Field, and                      |               |
