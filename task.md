@@ -4,7 +4,7 @@
 
     |   Backlog             |   Task                                                                |   Status      |
     |-----------------------|-----------------------------------------------------------------------|---------------|
-    |   Item Tree           |   Create UI and function get Item data from database table and        |               |
+    |   Item Tree           |   Create UI and function get Item data from database table and        |
     |                       |   (convert array to multi dimension array for tree structure)         |   DONE        |
     |                       |   Create Item flagged: new, edit, delete. for database action         |   ON PROGRESS |
     |                       |   Create javascript object to store flagged Item before save          |               |
