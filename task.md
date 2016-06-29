@@ -6,6 +6,8 @@
     |-----------------------|-----------------------------------------------------------------------|---------------|
     |   Item Tree           |   Create UI and function get Item data from database                  |   DONE        |
     |                       |   Create Item flagged: new, edit, delete. for database action         |   ON PROGRESS |
+    |                       |   Create javascript object to store flagged Item before save          |               |
+    |                       |   to database (nested data can't directly save to database table)     |               |
     |                       |   Create function get JSON data and save to database                  |   ON PROGRESS |
     |   Field               |   Create UI and function get data for all field type                  |   ON PROGRESS |
     |   schema              |   Create function on click Item, get Field Definition                 |   ON PROGRESS |

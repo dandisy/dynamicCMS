@@ -1,3 +1,7 @@
+Vue.filter('dashed', function (value) {
+    return value.replace(/\s+/g, '-');
+})
+
 Vue.component('item-tree', {
     template: '#item-tree-template',
     props: {
