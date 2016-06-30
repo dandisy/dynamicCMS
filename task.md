@@ -1,5 +1,5 @@
 ##  Tasks
-    Webcore - DynamicCMS Development
+    Webcore - DynamicCMS - Development Project
 
 1.  Content Management
 
