@@ -2,7 +2,7 @@
 	<div class="menubar-scroll-panel">
 		<!-- BEGIN MAIN MENU -->
 		<ul id="main-menu" class="gui-controls">
-			<!-- BEGIN SCHEMA -->
+			<!-- BEGIN ITEM TREE -->
 			{% verbatim %}
             <script type="text/x-template" id="item-tree-template">
                 <li :class="{'gui-folder': isFolder, 'active': isActive}" @click="setActive">
@@ -10,7 +10,7 @@
                         <div class="gui-icon" :class="model.name | lowercase" v-if="model.icon" v-el:item><span class="fa fa-{{model.icon}}"></span></div>
                         <span class="title">{{ model.name }}</span>
 
-                        <ul id="item-context-menu" tabindex="-1" v-if="viewMenu" @mouseleave="closeMenu" :style="{top: top, left: left}" v-el:right>
+                        <!--<ul id="item-context-menu-off" tabindex="-1" v-if="viewMenu" @mouseleave="closeMenu" :style="{top: top, left: left}" v-el:right>
                             <li v-if="isFolder" @click="addFolder">New Folder</li>
                             <li v-if="isFolder" @click="addItem">New Item</li>
                             <li>Rename</li>
@@ -18,7 +18,7 @@
                             <li>Cut</li>
                             <li>Paste</li>
                             <li>Delete</li>
-                        </ul>
+                        </ul>-->
                     </a>
 
                     <ul v-show="open" v-if="isFolder">
@@ -29,7 +29,7 @@
 
             <item-tree :model="item" v-for="item in treeData"></item-tree>
             {% endverbatim %}
-			<!-- END SCHEMA -->
+			<!-- END ITEM TREE -->
 		</ul><!--end .main-menu -->
 		<!-- END MAIN MENU -->
 

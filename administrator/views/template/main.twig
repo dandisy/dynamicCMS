@@ -23,6 +23,21 @@
 		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/typeahead/typeahead.css?1424887863">
 		<link type="text/css" rel="stylesheet" href="{{ base_url() }}assets/css/theme-default/libs/dropzone/dropzone-theme.css?1424887864">
 
+
+		{% verbatim %}
+		<script type="text/x-template" id="context-menu-template">
+			<ul id="item-context-menu" tabindex="-1" v-if="viewMenu" @mouseleave="closeMenu" :style="{top: top, left: left}">
+				<li @click="addFolder">New Folder</li>
+				<li @click="addItem">New Item</li>
+				<li>Rename</li>
+				<li>Copy</li>
+				<li>Cut</li>
+				<li>Paste</li>
+				<li>Delete</li>
+			</ul>
+		</script>
+		{% endverbatim %}
+
 		<style>
 			.brand-holder a span {
 				font-size: 175%;
@@ -56,6 +71,8 @@
 			<!-- BEGIN OFFCANVAS RIGHT -->
 			{% block offcanvas %}{% include 'views/template/offcanvas.twig' %}{% endblock %}
 			<!-- END OFFCANVAS RIGHT -->
+
+			<item-context-menu></item-context-menu>
 		</div><!--end #base-->
 		<!-- END BASE -->
 

@@ -1,96 +1,11 @@
 Vue.filter('dashed', function (value) {
     return value.replace(/\s+/g, '-');
-})
-
-Vue.component('item-tree', {
-    template: '#item-tree-template',
-    props: {
-        model: Object
-    },
-    data: function () {
-        return {
-            open: false,
-            viewMenu: false,
-            top: '0px',
-            left: '0px'
-        }
-    },
-    computed: {
-        isFolder: function () {
-            return this.model.children/* &&
-             this.model.children.length*/
-        },
-        isActive: function () {
-            return this.model.active
-        },
-        isWebcore: function () {
-            return this.model.name === 'Webcore' ||
-                this.$parent.model.name === 'Webcore'
-        },
-        isSchema: function () {
-            return this.model.name === 'Schema' ||
-                this.$parent.model.name === 'Schema'
-        }
-    },
-    events: {
-        close: function () {
-            this.open = false;
-            return true
-        }
-    },
-    methods: {
-        setActive: function () {
-            this.isActive = true ;
-        },
-        addFolder: function () {
-            var name = prompt('Folder name?');
-
-            this.model.children.push({
-                name: name,
-                children: []
-            });
-
-            this.open = true
-        },
-        addItem: function () {
-            var name = prompt('Item name?');
-
-            this.model.children.push({
-                name: name,
-                item: this.$parent.$els.item.className.split(' ')[1]
-            });
-
-            this.open = true;
-        },
-
-        setMenu: function(top, left) {
-            largestHeight = window.innerHeight - this.$els.right.offsetHeight - 25;
-            largestWidth = window.innerWidth - this.$els.right.offsetWidth - 25;
-
-            if (top > largestHeight) top = largestHeight;
-
-            if (left > largestWidth) left = largestWidth;
-
-            this.top = top + 'px';
-            this.left = left + 'px';
-        },
-        closeMenu: function() {
-            this.viewMenu = false;
-        },
-        openMenu: function(e) {
-            this.viewMenu = true;
-
-            Vue.nextTick(function() {
-                this.$els.right.focus();
-                this.setMenu(e.pageY, e.pageX)
-            }.bind(this));
-        }
-    }
 });
 
-var itemTree = new Vue({
-    el: '#menubar',
+var dataField = new Vue({
+    el: '#base',
     data: {
+        currentView: 'welcome',
         treeData: []
     },
     ready: function () {
@@ -98,19 +13,155 @@ var itemTree = new Vue({
             this.treeData = response.data;
         });
     },
+    events: {
+        'item-in-action': function(message) {
+            this.$broadcast('context-menu-status', message);
+        }
+    },
     methods: {
         saveItem: function () {
             console.log(JSON.parse(JSON.stringify(this.treeData)));
         }
-    }
-});
-
-var dataField = new Vue({
-    el: '#base',
-    data: {
-        currentView: 'welcome'
     },
     components: {
+        itemTree: {
+            name: 'item-tree',
+            template: '#item-tree-template',
+            props: {
+                model: Object
+            },
+            data: function () {
+                return {
+                    open: false,
+                    viewMenu: false,
+                    top: '0px',
+                    left: '0px'
+                }
+            },
+            computed: {
+                isFolder: function () {
+                    return this.model.children/* &&
+                     this.model.children.length*/
+                },
+                isActive: function () {
+                    return this.model.active
+                },
+                isWebcore: function () {
+                    return this.model.name === 'Webcore' ||
+                        this.$parent.model.name === 'Webcore'
+                },
+                isSchema: function () {
+                    return this.model.name === 'Schema' ||
+                        this.$parent.model.name === 'Schema'
+                }
+            },
+            events: {
+                close: function () {
+                    this.open = false;
+                    return true
+                }
+            },
+            methods: {
+                setActive: function () {
+                    this.isActive = true ;
+                },
+                /*addFolder: function () {
+                    var name = prompt('Folder name?');
+
+                    this.model.children.push({
+                        name: name,
+                        children: []
+                    });
+
+                    this.open = true
+                },
+                addItem: function () {
+                    var name = prompt('Item name?');
+
+                    this.model.children.push({
+                        name: name,
+                        item: this.$parent.$els.item.className.split(' ')[1]
+                    });
+
+                    this.open = true;
+                },*/
+                /*setMenu: function(top, left) {
+                    largestHeight = window.innerHeight - this.$els.right.offsetHeight - 25;
+                    largestWidth = window.innerWidth - this.$els.right.offsetWidth - 25;
+
+                    if (top > largestHeight) top = largestHeight;
+
+                    if (left > largestWidth) left = largestWidth;
+
+                    this.top = top + 'px';
+                    this.left = left + 'px';
+                },*/
+                /*closeMenu: function() {
+                    this.viewMenu = false;
+                },*/
+                openMenu: function(e) {
+                    var message = {
+                        obj: this,
+                        open: true,
+                        x: e.pageX,
+                        y: e.pageY
+                    };
+
+                    this.$dispatch('item-in-action', message);
+
+                    /*this.viewMenu = true;
+
+                    Vue.nextTick(function() {
+                        this.$els.right.focus();
+                        this.setMenu(e.pageY, e.pageX)
+                    }.bind(this));*/
+                }
+            }
+        },
+        itemContextMenu: {
+            template: '#context-menu-template',
+            data: function () {
+                return {
+                    obj: {},
+                    viewMenu: false,
+                    top: '0px',
+                    left: '0px'
+                }
+            },
+            events: {
+                'context-menu-status': function(message) {
+                    this.obj = message.obj;
+                    this.viewMenu = message.open;
+                    this.top = message.y + 'px';
+                    this.left = message.x + 'px';
+                }
+            },
+            methods: {
+                closeMenu: function() {
+                    this.viewMenu = false;
+                    this.top = '0px';
+                    this.left = '0px';
+                },
+                addFolder: function () {
+                    var name = prompt('Folder name?');
+
+                    this.obj.model.children.push({
+                        name: name,
+                        children: []
+                    });
+                },
+                addItem: function () {
+                    var name = prompt('Item name?');
+
+                    this.obj.model.children.push({
+                        name: name/*,
+                        item: this.obj.$parent.$els.item.className.split(' ')[1]*/
+                    });
+
+                    this.obj.open = true;
+                }
+            }
+        },
         welcome: {
             template: '#webcore-welcome'
         },
