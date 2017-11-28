@@ -1,5 +1,5 @@
 ## DEPRECATED!
-### Use [webcore-cms](https://github.com/dandisy/webcore-cms) instead
+## use [webcore-cms](https://github.com/dandisy/webcore-cms) laravel based, instead
 
 ### DynamicCMS
 #### The CodeIgniter Application Integrated with HMVC, Twig and Doctrine ORM
