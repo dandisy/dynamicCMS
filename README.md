@@ -1,6 +1,8 @@
 # DEPRECATED!
 use Webcore Single Platform based on laravel in https://github.com/dandisy/webcore instead
 
+____________________________________________________________________________________________________
+
 ### DynamicCMS
 #### The CodeIgniter Application Integrated with HMVC, Twig and Doctrine ORM
 ##### Featured with dynamic routes, dynamic controllers and dynamic views from database
